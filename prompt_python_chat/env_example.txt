@@ -1,0 +1,10 @@
+HOST=""
+PORT=""
+SECRET_KEY = 
+DB_SYSTEM = ''
+DB_SYSTEM_CONNECTOR = ''
+DB_USER = ''
+DB_PASS = ''
+DB_HOST = ''
+DB_PORT = ''
+DB_NAME = ""
