@@ -2,7 +2,16 @@
 A Async Client Server Live Chat project
 using SQLAlchemy, aiohttp, prompt-toolkit
 
-- project length: 2 weeks 
+- project length: 2 weeks
+
+The Project divides into layer application:
+1. Presentation(GUI) - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/client/view/channel_window.py
+2. Presentation Logic - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/client/
+3. Routes - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/routes
+4. Controller - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/controllers
+5. Services - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/service
+6. DAO layer - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/db_dao
+7. DB models - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/db_models 
 
 ## features:
 - each user type chat commands
