@@ -1,0 +1,63 @@
+services:
+  client:
+    container_name: chat_client
+    stdin_open: true
+    tty: true
+    build:
+      context: './client'
+      dockerfile: Dockerfile   
+    environment:
+      - PYTHONUNBUFFERED=1
+      - SERVER_HOST=127.0.0.1
+      - SERVER_PORT=8082
+      - CLIENT_PORT=8081         
+      - LOG_LEVEL=DEBUG
+      - APP_NAME=chats_client
+    network_mode: host
+
+  server:
+    container_name: chat_server
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    environment:
+      - USE_SQLLITE=false
+      - USE_MEMORY=false
+      - SQLALCHEMY_SQLLITE_DB_PATH=/db/dev.db
+      - CREATE_DB=true
+      - SQL_ALCHEMY_SESSION_AUTO_COMMIT=false
+      - SQL_ALCHEMY_SESSION_AUTO_FLUSH=false
+      - SQL_ALCHEMY_EXPIRE_ON_COMMIT=false
+      - SQLALCHEMY_ECHO=false
+      - SQLALCHEMY_LOG_LEVEL=ERROR
+      - LOG_LEVEL=DEBUG
+      - APP_NAME=chats_server
+      - PYTHONUNBUFFERED=1
+      - DEFAULT_HOST=localhost
+      - DEFAULT_PORT=8082
+      - SECRET_KEY=secret
+      - DB_SYSTEM=postgresql
+      - DB_SYSTEM_CONNECTOR=psycopg2
+      - DB_USER=root
+      - DB_PASS=1111
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=chatdb      
+    volumes:
+      - ./server/db/:/app/db/
+      - ./server/logs:/app/logs/
+    ports:
+      - '8082:8082'
+
+  db:
+      image: postgres
+      restart: always
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_PASSWORD: 1111
+        POSTGRES_DB: chatdb
+      volumes:
+        - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

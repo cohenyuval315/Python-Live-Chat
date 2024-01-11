@@ -1,0 +1,27 @@
+FROM python:3.9-alpine
+
+
+RUN apk add --no-cache \
+    postgresql-dev \
+    gcc \
+    python3-dev \
+    musl-dev \
+    libffi-dev \
+    libxml2-dev \
+    libxslt-dev \
+    libjpeg-turbo-dev \
+    zlib-dev
+
+ENV PYTHONPATH /app
+
+
+ENV APP_ENV 'development'
+ENV SQLALCHEMY_DATABASE_URI "/db/dev.db"
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY .env . 
+COPY . .
+CMD ["python","server.py","--host","0.0.0.0","--port","8082","start"]
