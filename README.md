@@ -1,75 +1,43 @@
-# Python-Live-Chat
-A Async Client Server Live Chat project
-using SQLAlchemy, aiohttp, prompt-toolkit
+# Project Overview
+Dynamic Live Chat Rooms, based on Asynchronous Client-Server architecture. The development stack incorporates aiohttp, prompt-toolkit, and SQLAlchemy for seamless integration with both SQLite and PostgreSQL databases.
 
-- project length: 2 weeks
+# Project objective
+The goal is to create a concise yet robust project with clear software layers, specifically designing an interactive chat platform for local area network (LAN) use. The focus is on providing essential features for user management, such as role permissions, moderation capabilities (ban, silence, unban), and channel administration. This ensures control over the chat environment, making it suitable for diverse users while preventing misuse.
 
-The Project divides into layer application:
-1. Presentation(GUI) - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/client/view/channel_window.py
-2. Presentation Logic - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/client/
-3. Routes - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/routes
-4. Controller - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/controllers
-5. Services - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/service
-6. DAO layer - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/db_dao
-7. DB models - https://github.com/cohenyuval315/Python-Live-Chat/tree/main/prompt_python_chat/db_models 
+# Project Timeline
+- Anticipated total work hours: Approximately 35 hours
+- Adjustments: 6 additional man-hours
+  
+# Project Components:
+- Graphical User Interface (GUI) - ChannelWindow utilizing prompt-toolkit
+- Presentation Logic - Implementation of Asynchronous Client Managers
+- Server Endpoints
+- Controllers for effective interaction
+- Services - Implementing Business Logic
+- Data Access Layer (DAO) - Incorporating the repository pattern, and bridge with SQLite, PostgreSQL,  provided by SQLAlchemy 
+- Definition of Entities
 
-## features:
-- each user type chat commands
-- channels with constraints
-- anoynymous login
-- real live chat updating
-- handles multiple clients
-- terminal gui
-- role permission hierachy
-- admin operations
-- mod operations
-- authentication
-- online service
+## key features:
+- Authentication and anonymous login.
+- Real-time chat updates to enhance user engagement.
+- Role-based permission hierarchy for streamlined access control.
+- Administrative operations to manage the system.
+- Moderator operations for efficient content moderation.
+- Online status service for users and channels visibility.
 
----
-**role permission hierachy** : four types of users(each user type has all operations available from the user types under him):
-  1. Admin:
-     - can enter admin channels
-     - can promote a user to be mod
-     - can demote mod to be user
-     - can clean channel messages from db
-     - can promote channel for admins only
-     - can demote channel from admins only
-     - can create admin channel
-     - can delete admin channel
-       
-  3. Mod
-     - can enter mod channels
-     - can mute user in chosen channels
-     - can unmute user in chosen channels
-     - can ban user in chosen channels
-     - can unban user in chosen channels
-     - can create mod/user/free-for-all channel
-     - can delete mod/user/free-for-all channel
-     
-  5. User
-     - can enter user channels
-     - can create user channel
-     - can create free-for-all channel
-       
-  6. Guest(Anonymous)
-     - /help for help
-     - /lobby for lobby chat
-     - /clear for cleaning current chat visually
-     - /exit exiting the application
-     - can change channel
-     - has self lobby chat
-     - can enter guest channels
+# Project Setup
+## server setup
+```
+docker compose up server --build
+```
 
-
-
-# setup
-1. create virtual environment
+## client setup
+1. Establish a virtual environment
 ```code
 python -m venv ./venv
 ```
 
-2. activate venv
+2. Activate the virtual environment
   - unix :
       ```code
         source ./venv/bin/activate
@@ -78,33 +46,24 @@ python -m venv ./venv
       ```code
         ./venv/Scripts/activate
       ```
-3. setup.py
-```code
-pip -e setup.py
+
+3. Install dependencies from requirements.txt
+ ```
+   pip install -r requirements.txt
+ ```
+4. Execute and re-run the application, utilizing the configuration provided by the Click library.
+```
+  python main.py
 ```
 
-4. libs
-```code
-pip install -r requirement.txt
-```
+# Project Preview
+## Lobby View
+![LiveChat3](https://github.com/cohenyuval315/Python-Live-Chat/assets/61754002/fec6e847-196b-4464-ba7d-f5b1c441cf1f)
 
-5. env file
-- enter your configuration in this file format and change file name to .env  
-https://github.com/cohenyuval315/Python-Live-Chat/blob/main/prompt_python_chat/env_example.txt
+## Inside ChatRoom
+![LiveChat1](https://github.com/cohenyuval315/Python-Live-Chat/assets/61754002/87a0d986-09d5-49c6-b9a7-6b04887d9a3c)
 
-6. start server
-```code
-  python promopt_python_chat/server.py
-```
-![image](https://github.com/cohenyuval315/Python-Live-Chat/assets/61754002/093ad4a4-0f7e-402a-b483-1e1337988478)
+## Permissions In Chatroom
+![LiveChat2](https://github.com/cohenyuval315/Python-Live-Chat/assets/61754002/f5803d8c-fe86-4b03-b4fa-3da6a7517d57)
 
 
-7. start client
-```code
-  python promopt_python_chat/client/client.py # start one client
-```
-![image](https://github.com/cohenyuval315/Python-Live-Chat/assets/61754002/2c82d882-c480-429d-9c33-d15eb0d86d9b)
-
-
-# Preview
-![image](https://github.com/cohenyuval315/python_terminal_prompt_server_clients_live_chat/assets/61754002/bc126ede-ea44-43d8-b587-4370cc9145d3)
