@@ -1,5 +1,5 @@
 # Project Overview
-Dynamic Live Chat Rooms, based on Asynchronous Client-Server architecture. The development stack incorporates aiohttp, prompt-toolkit, and SQLAlchemy for seamless integration with both SQLite and PostgreSQL databases.
+Live Terminal Chat Rooms written in Python, based on Asynchronous Client-Server architecture. The development stack incorporates aiohttp, prompt-toolkit, and SQLAlchemy for seamless integration with both SQLite and PostgreSQL databases.
 
 # Project objective
 The goal is to create a concise yet robust project with clear software layers, specifically designing an interactive chat platform for local area network (LAN) use. The focus is on providing essential features for user management, such as role permissions, moderation capabilities (ban, silence, unban), and channel administration. This ensures control over the chat environment, making it suitable for diverse users while preventing misuse.
